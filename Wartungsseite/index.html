@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDDC — Website im Wartungszustand</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-700:#1F4FBF;
+    --blue-800:#173C93;
+    --blue-100:#E8EFFC;
+    --cyan-400:#63C8FF;
+    --ink-900:#1A1D24;
+    --ink-700:#3A3F4B;
+    --ink-500:#6B7280;
+    --gray-50:#F4F5F7;
+    --gray-100:#EEF0F3;
+    --white:#FFFFFF;
+    --line:#E4E7EC;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    color:var(--ink-900);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:#ffffff;
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1200px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .logo{height:28px;width:auto}
+  .lang-switch{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;letter-spacing:.04em}
+  .lang-switch button{
+    background:none;border:none;cursor:pointer;color:var(--ink-500);
+    font:inherit;padding:6px 4px;letter-spacing:.04em;
+  }
+  .lang-switch button.active{color:var(--blue-700)}
+  .lang-switch span{color:var(--line)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(10,22,54,.15) 0%, rgba(8,17,42,.35) 45%, rgba(6,13,33,.92) 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;top:0;height:40%;
+    background:linear-gradient(180deg, rgba(6,13,33,.35) 0%, rgba(6,13,33,0) 100%);
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    max-width:1200px;margin:0 auto;padding:0 24px 72px;
+    width:100%;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--cyan-400);font-size:13px;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan-400);box-shadow:0 0 0 4px rgba(99,200,255,.25)}
+  .hero h1{
+    color:#fff;font-size:clamp(32px,5vw,56px);font-weight:800;
+    line-height:1.08;letter-spacing:-0.02em;max-width:820px;margin-bottom:18px;
+  }
+  .hero p.lead{
+    color:rgba(255,255,255,.82);font-size:clamp(16px,1.8vw,19px);
+    line-height:1.6;max-width:620px;font-weight:400;
+  }
+
+  /* ---------- Info section ---------- */
+  .section{max-width:1200px;margin:0 auto;padding:64px 24px}
+  .info{background:var(--gray-50)}
+  .tag{
+    color:var(--blue-700);font-size:13px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .info h2{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-0.01em;margin-bottom:14px}
+  .info > p{color:var(--ink-700);font-size:16px;line-height:1.7;max-width:680px;margin-bottom:40px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(20,30,60,.08)}
+  .card .k{
+    display:flex;align-items:center;gap:8px;color:var(--blue-700);
+    font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .card .k svg{width:16px;height:16px;flex:none}
+  .card .v{font-size:19px;font-weight:700;color:var(--ink-900);margin-bottom:4px;word-break:break-word}
+  .card .v a{color:inherit;text-decoration:none}
+  .card .v a:hover{color:var(--blue-700)}
+  .card .d{font-size:13.5px;color:var(--ink-500)}
+
+  .cta-row{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--blue-700);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15px;padding:14px 26px;border-radius:10px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .btn:hover{background:var(--blue-800);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--blue-700);border:1.5px solid var(--blue-700)}
+  .btn.ghost:hover{background:var(--blue-100)}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding:28px 24px}
+  .footer-inner{
+    max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;
+    align-items:center;justify-content:space-between;
+  }
+  .footer-inner img{height:20px;opacity:.85}
+  .footer-inner p{color:var(--ink-500);font-size:13px}
+
+  [data-lang]{display:none}
+  [data-lang].active{display:block}
+  .eyebrow[data-lang],.hero h1[data-lang],.hero p[data-lang]{display:none}
+  .eyebrow[data-lang].active{display:inline-flex}
+  .hero h1[data-lang].active{display:block}
+  .hero p[data-lang].active{display:block}
+  .card .v span[data-lang]{display:none}
+  .card .v span[data-lang].active{display:inline}
+  .card .d[data-lang]{display:none}
+  .card .d[data-lang].active{display:block}
+  .btn span[data-lang]{display:none}
+  .btn span[data-lang].active{display:inline}
+
+  @media (max-width:640px){
+    .hero{min-height:78vh}
+    .hero-content{padding-bottom:48px}
+    .section{padding:48px 20px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img class="logo" src="assets/logo.svg" alt="GDDC">
+    <div class="lang-switch">
+      <button type="button" id="btn-de" class="active" onclick="setLang('de')">DE</button>
+      <span>/</span>
+      <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="assets/hero.webp" alt="GDDC Drohne im Einsatz">
+  <div class="hero-content">
+    <div class="eyebrow active" data-lang="de">
+      <span class="dot"></span>Wartungsarbeiten
+    </div>
+    <div class="eyebrow" data-lang="en">
+      <span class="dot"></span>Site maintenance
+    </div>
+
+    <h1 data-lang="de" class="active">Wir sind gleich wieder für Sie in der Luft.</h1>
+    <h1 data-lang="en">We&rsquo;ll be back in the air shortly.</h1>
+
+    <p class="lead active" data-lang="de">
+      Unsere Website befindet sich derzeit für kurze Zeit im Wartungszustand und wird in Kürze wieder verfügbar sein.
+    </p>
+    <p class="lead" data-lang="en">
+      Our website is currently undergoing brief maintenance and will be back online shortly.
+    </p>
+  </div>
+</section>
+
+<section class="section info">
+  <div data-lang="de" class="active">
+    <div class="tag">GDDC Kontakt</div>
+    <h2>Solange sind wir persönlich für Sie da</h2>
+    <p>Haben Sie Fragen oder benötigen Sie weitere Informationen? Nehmen Sie gerne Kontakt zu uns auf — wir beraten Sie gerne.</p>
+  </div>
+  <div data-lang="en">
+    <div class="tag">GDDC Contact</div>
+    <h2>In the meantime, we&rsquo;re happy to help</h2>
+    <p>Have questions or need further information? Feel free to get in touch with us — we&rsquo;re happy to advise you.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="k">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span data-lang="de" class="active">Telefon</span><span data-lang="en">Phone</span>
+      </div>
+      <div class="v"><a href="tel:+494351767730">+49 (0)4351 767730</a></div>
+      <div class="d active" data-lang="de">Zentrale</div>
+      <div class="d" data-lang="en">Main line</div>
+    </div>
+
+    <div class="card">
+      <div class="k">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        <span>E-Mail</span>
+      </div>
+      <div class="v"><a href="mailto:kontakt@gddc-sh.de">kontakt@gddc-sh.de</a></div>
+      <div class="d active" data-lang="de">Antwort in der Regel innerhalb eines Werktags</div>
+      <div class="d" data-lang="en">We typically reply within one business day</div>
+    </div>
+
+    <div class="card">
+      <div class="k">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11.8A8 8 0 0 0 4 10.2C4 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-lang="de" class="active">Standort</span><span data-lang="en">Location</span>
+      </div>
+      <div class="v">Marienthaler Str. 12, 24340 Eckernförde</div>
+      <div class="d active" data-lang="de">German Dynamic Drone Center</div>
+      <div class="d" data-lang="en">German Dynamic Drone Center</div>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn" href="mailto:kontakt@gddc-sh.de">
+      <span data-lang="de" class="active">E-Mail schreiben</span>
+      <span data-lang="en">Send us an email</span>
+    </a>
+    <a class="btn ghost" href="tel:+494351767730">
+      <span data-lang="de" class="active">Jetzt anrufen</span>
+      <span data-lang="en">Call now</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <img src="assets/logo.svg" alt="GDDC">
+    <p data-lang="de" class="active">&copy; 2026 GDDC GmbH. Alle Rechte vorbehalten.</p>
+    <p data-lang="en">&copy; 2026 GDDC GmbH. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.querySelectorAll('[data-lang]').forEach(function(el){
+      el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+    });
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>

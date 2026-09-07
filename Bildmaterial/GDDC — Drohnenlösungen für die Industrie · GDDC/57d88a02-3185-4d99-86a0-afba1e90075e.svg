@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="Agisoft Metashape">
+  <rect width="1200" height="750" fill="#F7F8FA"/>
+  <rect x="48" y="48" width="1104" height="654" rx="24" fill="#FFFFFF" stroke="#D9DDE3" stroke-width="2"/>
+  <!-- abstract terrain mesh  not a DJI product photo -->
+  <g fill="none" stroke="#1F4FBF" stroke-width="2" opacity="0.35">
+    <path d="M120 520 L280 400 L420 460 L560 300 L720 380 L880 240 L1080 320"/>
+    <path d="M120 560 L300 440 L460 500 L620 360 L780 420 L940 280 L1080 360"/>
+    <path d="M280 400 L300 440 M420 460 L460 500 M560 300 L620 360 M720 380 L780 420 M880 240 L940 280"/>
+  </g>
+  <circle cx="560" cy="300" r="6" fill="#1F4FBF"/>
+  <circle cx="720" cy="380" r="6" fill="#1F4FBF"/>
+  <circle cx="880" cy="240" r="6" fill="#1F4FBF"/>
+  <text x="120" y="160" font-family="Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#111318">Agisoft Metashape</text>
+  <text x="120" y="210" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#5C6370">Photogrammetrie · 3D-Modelle · Orthofotos</text>
+</svg>
