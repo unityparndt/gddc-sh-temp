@@ -135,6 +135,11 @@
   }
   .footer-inner img{height:20px;opacity:.85}
   .footer-inner p{color:var(--ink-500);font-size:13px}
+  .footer-links{display:flex;gap:20px}
+  .footer-links a{color:var(--ink-500);font-size:13px;text-decoration:none;font-weight:500}
+  .footer-links a:hover{color:var(--blue-700)}
+  .footer-links a span[data-lang]{display:none}
+  .footer-links a span[data-lang].active{display:inline}
 
   [data-lang]{display:none}
   [data-lang].active{display:block}
@@ -250,6 +255,12 @@
 <footer>
   <div class="footer-inner">
     <img src="assets/logo.svg" alt="GDDC">
+    <nav class="footer-links">
+      <a href="impressum.html">
+        <span data-lang="de" class="active">Impressum</span>
+        <span data-lang="en">Legal Notice</span>
+      </a>
+    </nav>
     <p data-lang="de" class="active">&copy; 2026 GDDC GmbH. Alle Rechte vorbehalten.</p>
     <p data-lang="en">&copy; 2026 GDDC GmbH. All rights reserved.</p>
   </div>
